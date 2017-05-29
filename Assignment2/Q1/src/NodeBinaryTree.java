@@ -2,8 +2,11 @@ import javax.xml.soap.Node;
 
 /**
  * Created by Alice Colt.
+ *
+ * Implementation of Node for BinaryTree with constructor, getters, setters and compareTo
+ *
  */
-public class NodeBinaryTree<T>
+public class NodeBinaryTree
 {
     // Value of node
     private int value;
@@ -74,7 +77,9 @@ public class NodeBinaryTree<T>
     }//setRight
 
 
-    public int compareTo(NodeBinaryTree node2) {
+    // Compare two integers;
+    public int compareTo(NodeBinaryTree node2)
+    {
         int value1 = this.getValue();
         int value2 = node2.getValue();
 
@@ -84,6 +89,5 @@ public class NodeBinaryTree<T>
             return 1;
         else
             return 0;
-    }
-
-}
+    }// compareTo
+}//NodeBinaryTree
