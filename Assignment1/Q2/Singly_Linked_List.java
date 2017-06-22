@@ -70,8 +70,4 @@ public class Singly_Linked_List
 
         return -1;
     }//getElement
-/*   int getSize()
-    {
-        return size;
-    }//getSize*/
 }//Singly_List_List
