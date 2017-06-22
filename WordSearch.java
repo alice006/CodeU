@@ -5,9 +5,6 @@ import java.util.*;
  */
 public class WordSearch {
 
-
-    // Search for a WORD - using list
-
     static List<String> wordSearchGrid(char[][] characters,
                                        int row,
                                        int column,
@@ -19,15 +16,12 @@ public class WordSearch {
 
         boolean[][] visited = new boolean[row][column];
 
-
         for (int index = 0; index < row; index++)
         {
-            for (int indexj = 0; indexj < column; indexj++)
+            for (int row = 0; row < numRows; row++)
             {
                 Set<String> validWord = wordGetter(Character.toString(characters[index][indexj]),
-                                                  index, indexj,
-                                                  row, column,
-                                                  characters,visited,dictionary);
+                                                  index, indexj, row, column, characters,visited,dictionary);
 
                 // Add to solution list
                 solution.addAll(validWord);
@@ -54,8 +48,7 @@ public class WordSearch {
 
         // Set for keeping all solutions
         Set<String> solution = new HashSet<>();
-
-        // If prefix is part of a dictionary word, add to solutions.
+        
         if(dictionary.isWord((prefix)))
         {
             solution.add(prefix);
@@ -71,17 +64,17 @@ public class WordSearch {
         int newRow = 0;
         int newCol = 0;
 
-        for(int index = -1; index < 2; index++)
+        for(int index = -1; index <= 1; index++)
         {
-            for (int indexj = -1; indexj < 2; indexj++)
+            for (int indexj = -1; indexj <= 1; indexj++)
             {
                 newRow = indexRow + index;
                 newCol = indexColumn + indexj;
 
                 //if not out of grid
                 if((newRow >= 0) && (newRow < indexRow ) &&
-                    newCol >= 0  && (newCol < indexColumn) &&
-                    !visited[newRow][newCol])
+                   (newCol) >= 0  && (newCol < indexColumn) &&
+                    (!visited[newRow][newCol]))
                 {
 
                     String newSol = prefix + characters[newRow][newCol];
@@ -92,22 +85,16 @@ public class WordSearch {
                      */
                     visited[indexRow][indexColumn] = true;
 
-
                     Set<String> wordsSolution = wordGetter(newSol, newRow, indexRow,
                                                             newCol, indexColumn,
                                                             characters, visited, dictionary);
 
-
                     visited[newRow][newCol] = false;
                     solution.addAll(wordsSolution);
 
-                }// if
-            }//for
-        }//for
-
+                }
+            }
+        }
         return solution;
-
     }// wordGetter
-
-
 }//WordSearch
