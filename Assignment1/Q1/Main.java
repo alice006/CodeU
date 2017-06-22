@@ -34,7 +34,7 @@ public class Main
         }//if
         else
         {    
-            if(checkPermutation(string1.toLowerCase(), string2.toLowerCase()))
+            if(checkPermutation(string1, string2))
             {
                 System.out.println("\" " + string1 + " \" is a permutation of \" " + string2 + " \"!");
             }//if
@@ -49,6 +49,10 @@ public class Main
     // Check if the number of characters of each type are the same for both strings
     public static boolean checkPermutation(String s1, String s2)
     {
+        // Transform s1 and s2 into low cases
+        s1 = s1.toLowerCase();
+        s2 = s2.toLowerCase();
+
         char[] charS1 = s1.toCharArray();
         char[] charS2 = s2.toCharArray();
 
